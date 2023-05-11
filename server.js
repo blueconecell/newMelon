@@ -2,8 +2,9 @@ const express = require("express");
 const app = express();
 const MongoClient = require("mongodb").MongoClient;
 const request = require("request");
-const youtubeAPI_URL = "AIzaSyBcB4AaEFGTrK0-dk26PFi95WMWdLoWqlM";
-
+const https = require("https");
+const API_KEY = "AIzaSyBcB4AaEFGTrK0-dk26PFi95WMWdLoWqlM";
+const API_URL = "https://www.googleapis.com/youtube/v3/search?key=" + API_KEY;
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 var db;
@@ -49,6 +50,10 @@ MongoClient.connect(
 );
 
 app.get("/", function (요청, 응답) {
+  // useApi = API_URL;
+  // https.get(useApi, function (응답) {
+  //   console.log(응답);
+  // });
   응답.sendFile(__dirname + "/index.html");
 });
 app.get("/write", function (요청, 응답) {

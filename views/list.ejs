@@ -45,7 +45,8 @@
     </div>
   </nav>
   <div class="container mt-3">
-    <% for(var i=0; i < mains.length; i++) { %>
+    <% console.log("sort result :") %> <% mains.sort(function(a,b){ return b.viewCounts - a.viewCounts }) %> <%console.log(mains.sort()) %> <% for(var i=0; i <
+    mains.length; i++) { %>
     <h4>_id : <%= mains[i]._id %></h4>
     <p>제목 : <%= mains[i].title %></p>
     <p>가수 : <%= mains[i].artist %></p>
