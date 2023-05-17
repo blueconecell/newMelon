@@ -16,24 +16,33 @@
 </head>
 <body>
   <%- include('nav.html') %>
+  <div></div>
   <div class="container mt-3">
-    <% console.log("sort result :") %> <% mains.sort(function(a,b){ return b.viewCounts - a.viewCounts }) %> <%console.log(mains.sort()) %>
+    <% mains.sort(function(a,b){ return b.viewCounts - a.viewCounts }) %>
     <ul class="list-group">
       <% for(var i=0; i < mains.length; i++) { %>
       <li class="list-group-item">
         <h4>_id : <%= mains[i]._id %></h4>
-        <a class="h4" href="/detail/<%= mains[i]._id %>">제목 :<%= mains[i].title %></a>
-        <iframe
-          id="ytplayer"
-          rel="0"
-          type="text/html"
-          width="720"
-          height="405"
-          frameborder="0"
-          allowfullscreen
-          src="https://www.youtube.com/embed/<%= mains[i].videoId %>"
-        ></iframe>
-        <img src="<%= mains[i].thumbnail %>" />
+        <h4>제목 :<%= mains[i].title %></h4>
+
+        <a class="btn thumbnailBtn" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"
+          ><img class="thumbnailImg" src="<%= mains[i].thumbnail %>"
+        /></a>
+        <div class="collapse" id="collapseExample">
+          <div class="card card-body">
+            <iframe
+              id="ytplayer"
+              rel="0"
+              type="text/html"
+              width="720"
+              height="405"
+              frameborder="0"
+              allowfullscreen
+              src="https://www.youtube.com/embed/<%= mains[i].videoId %>"
+            ></iframe>
+          </div>
+        </div>
+
         <p>조회수 : <%= mains[i].viewCounts %></p>
         <button class="btn btn-danger delete" data-id="<%= mains[i]._id %>">삭제</button>
       </li>
