@@ -25,10 +25,16 @@
         <h4>_id : <%= mains[i]._id %></h4>
         <h4>제목 :<%= mains[i].title %></h4>
 
-        <a class="btn thumbnailBtn" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"
+        <a
+          class="btn thumbnailBtn"
+          data-toggle="collapse"
+          href="#collapseExample_<%= mains[i]._id %>"
+          role="button"
+          aria-expanded="false"
+          aria-controls="collapseExample_<%= mains[i]._id %>"
           ><img class="thumbnailImg" src="<%= mains[i].thumbnail %>"
         /></a>
-        <div class="collapse" id="collapseExample">
+        <div class="collapse" id="collapseExample_<%= mains[i]._id %>">
           <div class="card card-body">
             <iframe
               id="ytplayer"
